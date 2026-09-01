@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arrivena — Trust Center</title>
+  <meta name="description" content="How Arrivena enforces confidentiality and security in the system's architecture: current controls, engineering roadmap, and compliance posture.">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="wordmark" href="../index.html">Arrivena</a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="site-nav__links">
+          <li><a href="../index.html">Overview</a></li>
+          <li><a href="index.html" aria-current="page">Trust</a></li>
+          <li><a href="../inquiries.html">Inquiries</a></li>
+        </ul>
+        <a class="sign-in" href="https://arrivena.app">Sign in</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <h1>Trust Center</h1>
+
+      <section aria-labelledby="approach">
+        <h2 id="approach" class="section-title">Approach</h2>
+        <div class="prose">
+          <p>Confidentiality in Arrivena is enforced by the database, on every request. Access checks, consent gates, and audit logging run in the application and database layers themselves: mechanisms the system carries out on its own, not policy asked of a staff member. This page lists those mechanisms as they run today, and the engineering roadmap that extends them.</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="controls-today">
+        <h2 id="controls-today" class="section-title">Controls that exist today</h2>
+        <div class="prose">
+          <p>Each row below is a mechanism in the running system, not a stated intention.</p>
+        </div>
+        <div class="table-wrap">
+        <table>
+          <caption class="visually-hidden">Controls that exist today</caption>
+          <thead>
+            <tr>
+              <th scope="col">Control</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Consent- and partnership-gated cross-organization access, evaluated at the time of each request rather than cached</td>
+              <td><span class="tag tag-live">Live</span></td>
+            </tr>
+            <tr>
+              <td>Consent revocation takes effect immediately, in the same transaction as the revocation itself</td>
+              <td><span class="tag tag-live">Live</span></td>
+            </tr>
+            <tr>
+              <td>Uniform denial responses: an unauthorized request and a request for a record that does not exist return the same response, so neither can be used to infer whether a record exists</td>
+              <td><span class="tag tag-live">Live</span></td>
+            </tr>
+            <tr>
+              <td>Database row-level security as a second isolation layer beneath the application, independent of application logic</td>
+              <td><span class="tag tag-live">Live</span></td>
+            </tr>
+            <tr>
+              <td>Append-only event ledgers for disclosures, referrals, placements, and funding decisions</td>
+              <td><span class="tag tag-live">Live</span></td>
+            </tr>
+            <tr>
+              <td>Structured logging under a mechanical no-PHI rule: logs carry entity identifiers, not clinical or personal content</td>
+              <td><span class="tag tag-live">Live</span></td>
+            </tr>
+            <tr>
+              <td>Encrypted connections to the database</td>
+              <td><span class="tag tag-live">Live</span></td>
+            </tr>
+            <tr>
+              <td>Infrastructure defined as code, with changes reviewed before they are applied</td>
+              <td><span class="tag tag-live">Live</span></td>
+            </tr>
+            <tr>
+              <td>Independent adversarial re-verification of security-relevant changes as a standing part of the engineering process</td>
+              <td><span class="tag tag-live">Live</span></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <section aria-labelledby="controls-planned">
+        <h2 id="controls-planned" class="section-title">Engineering roadmap</h2>
+        <div class="prose">
+          <p>We publish our roadmap the same way we publish our controls: specifically.</p>
+        </div>
+        <div class="table-wrap">
+        <table>
+          <caption class="visually-hidden">Engineering roadmap</caption>
+          <thead>
+            <tr>
+              <th scope="col">Control</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Field-level encryption at rest for sensitive attributes</td>
+              <td><span class="tag tag-planned">Planned</span></td>
+            </tr>
+            <tr>
+              <td>Configurable data retention</td>
+              <td><span class="tag tag-planned">Planned</span></td>
+            </tr>
+            <tr>
+              <td>Expanded audit export for customer compliance teams</td>
+              <td><span class="tag tag-planned">Planned</span></td>
+            </tr>
+            <tr>
+              <td>Independent third-party penetration testing, before the product is used with regulated production data</td>
+              <td><span class="tag tag-planned">Planned</span></td>
+            </tr>
+            <tr>
+              <td>SOC 2 examination</td>
+              <td><span class="tag tag-planned">Planned</span></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <section aria-labelledby="compliance-posture">
+        <h2 id="compliance-posture" class="section-title">Compliance posture</h2>
+        <div class="prose">
+          <p>Arrivena is designed for environments governed by 42 CFR Part 2. Production infrastructure runs on HIPAA-eligible AWS services, and SedgeRidge LLC has a business associate agreement in place with AWS covering production environments. Customer-specific business associate agreements and qualified service organization agreements are executed at onboarding, per customer, and are not posted here. Every claim on this page describes a mechanism you can verify in a demonstration.</p>
+        </div>
+      </section>
+
+      <section aria-labelledby="disclosure">
+        <h2 id="disclosure" class="section-title">Responsible disclosure</h2>
+        <div class="prose">
+          <p>If you believe you have found a security vulnerability in Arrivena, email <a href="mailto:security@arrivena.com">security@arrivena.com</a> with enough detail to reproduce the issue. We will acknowledge a report within one business day and will not pursue legal action against a researcher who reports a vulnerability in good faith and does not access or exfiltrate customer data beyond what is necessary to demonstrate the issue. Reports are handled directly by the engineering team; there is no paid bounty program.</p>
+        </div>
+      </section>
+
+      <div class="callout">
+        <h2>Security questionnaires</h2>
+        <p style="margin-bottom:0;">If your organization needs to complete a security review before a demonstration or a contract, send your questionnaire through <a href="../inquiries.html">Inquiries</a> and we will complete it directly.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="../inquiries.html">Inquiries</a></li>
+        <li><a href="../legal/terms.html">Terms</a></li>
+        <li><a href="../legal/privacy.html">Privacy</a></li>
+        <li><a href="../legal/messaging.html">Messaging</a></li>
+        <li><a href="index.html">Trust Center</a></li>
+      </ul>
+      <p class="footer-meta">© 2026 SedgeRidge LLC. Arrivena is a SedgeRidge product. Marietta, Georgia.</p>
+    </div>
+  </footer>
+</body>
+</html>
